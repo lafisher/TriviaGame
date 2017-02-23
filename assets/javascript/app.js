@@ -5,8 +5,8 @@
 //create timewrapper 
 //create if else for right answer, wrong answer, time out 
 //tally correct and incorect answers 
-//play music? 
-//display you win or you lose gifs or jpgs
+//play music when time runs out 
+//display "you win" or "you lose" gifs or jpgs
 //reset button. my old enemy 
 var startGame;
 var questions =[];
@@ -18,4 +18,14 @@ var noAnswer = 0;
 var timeWarp = 30;
 var chooseAnswer;
 var tickTock;
-var 
+var audio = new Audio("assets/rhps-jump2lft.wav");
+
+//audio.play();
+
+setTimeout(lostInTime, 1000 * 90);
+
+function lostInTime() {
+
+ $("#finalCountDown").append("<h2>setTimeout</h2>");
+  audio.play();
+};

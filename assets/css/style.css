@@ -12,6 +12,11 @@ h1 {
 	padding: 20px 0px 20px 0px;
 	
 }
+p{color: red;
+	text-align: center;
+	padding: 20px 0px 20px 0px;
+
+}
 
 .question{
 	color: red;
@@ -21,13 +26,6 @@ h1 {
 }
 .answers{
 	color: red;
-	text-align: center;
-	line-height: 50px;
-
-}
-
-.radio {
-	color: white;
 	text-align: center;
 	line-height: 50px;
 }
@@ -47,5 +45,8 @@ h1 {
 	text-align: center;
 	line-height: 50px;
 }
-
+.gameQuestions {color: red;
+	text-align: center;
+	line-height: 50px;
+}
 

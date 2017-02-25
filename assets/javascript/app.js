@@ -21,6 +21,7 @@ var noAnswer = 0;
 var chooseAnswer;
 var gamePlay; 
 var questionsLeft = 0; 
+var timeLeft = 25;
 var timerNum;
 var audio = new Audio("assets/rhps-jump2lft.wav");
 
@@ -61,17 +62,17 @@ $("body").on("click", ".answer", function(event){
 //recognize correct answer
 function generateWin() {
 	correctAnswers++;
-	gamePlay = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + countdown + "</span></p>" + "<p class='text-center'>Yes! time for the floor show!" + answers[questionsLeft] + "</p>" ;
+	gamePlay = "<p class='text-center'> Yes! Time for the floor show!" + answers[questionsLeft] + "</p>" ;
 	$(".theLab").html(gamePlay);
-	setTimeout(wait, 4000);  
+	//setTimeout();  
 };
 
 //recognize incorrect answer 
 function generateLoss() {
 	incorrectAnswers++;
-	gamePlay = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + countdown + "</span></p>" + "<p class='text-center'>Oh Rocky! must have half your brain" + answers[questionsLeft] + "</p>" ;
+	gamePlay =  "<p class='text-center'> Oh Rocky! Frankie must have half your brain" + answers[questionsLeft] + "</p>" ;
 	$(".theLab").html(gamePlay);
-	setTimeout(wait, 4000); 
+	//setTimeout(); 
 };
 
 //timer function 
@@ -79,13 +80,17 @@ function generateLoss() {
 function lostInTime() {
 
 //set countdown to starting time
-	var timeLeft = 25;
+	timeLeft = 25;
 //set interval to create countdown 
 	timerNum = setInterval(countdown, 1000);
 
 	$(".timer").html("<div id='finalCountDown'><h5>Time Warp in . . .  " + timeLeft + "</h5></div>");
- 
-  			function countdown() {
+ 	//countdown(); 
+  
+
+};
+
+			function countdown() {
 		if (timeLeft < 0) {
 			clearInterval(timerNum);
 			$(".theLab").append( "ak! You've been Medusa Transducered!");		
@@ -97,7 +102,6 @@ function lostInTime() {
 		}
 	};
 
-};
 lostInTime(); // and lost in space. and meaning. 
 })
 

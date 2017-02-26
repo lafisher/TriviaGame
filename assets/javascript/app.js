@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 //let's psuedo code this B
-//create global variable []s for questions, multiple choice, and correct answers - check
+//create global variable []s for questions, multiple choice, correct answers, and images - check
 //ensure arrays coralate with one another corectly ????? 
-//append questions to html - one wil go! 
-//create timer - well i times something! 
+//append questions to html - one will go! 
+//create timer - well it times something! 
 //create if else for right answer, wrong answer, time out ????
 //tally correct and incorect answers - maybe this works
 //display "you win", "you lose", or timeout jpgs
@@ -30,19 +30,18 @@ var audio = new Audio("assets/rhps-jump2lft.wav");
 function initialize() {
 	startGame = "<p class='text-center main-button-container'><a class='btn btn-danger btn-lg start-button' href='#' role='button'>Damnit Janet</a></p>";
 	$(".theLab").html(startGame);
-}
+};
+
 initialize();
 //on click event to start game play
-$("body").on("click", ".start-button", function(event){
+	$("body").on("click", ".start-button", function(event){
 	lostInTime();
-	
-letThereBeQuestions();
-
+	letThereBeQuestions();
 });
 
 function letThereBeQuestions() {
 	gamePlay = "<p class='text-center'>" + questions[questionsLeft] + "</p><p class='first-answer answer'>a) " + choices[questionsLeft][0] + "</p><p class='answer'>b) " + choices[questionsLeft][1] + "</p><p class='answer'>c) " + choices[questionsLeft][2] + "</p><p class='answer'>d) " + choices[questionsLeft][3] + "</p>";
-	$(".theLab").prepend(gamePlay);
+	$(".theLab").html(gamePlay);
 }
 //on click event to choose answer 
 //note to self - come up with a better naming system answer and answers not so much
@@ -105,6 +104,11 @@ function countdown() {
 		}
 
 	};
+function endGame(){
+	gamePlay =  "<p class='summary-correct'>Chances to return to Transylvania: " + correctAnswers + "</p>" + "<p>Shot with a ray gun by the butler: " + incorrectAnswers + "</p>" + "<p>Medusa Transducer: " + noAnswer + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-danger btn-lg reset-button' href='#' role='button'>Time Warp AGAIN!</a></p>";
+	$(".theLab").html(gamePlay);
+};
+
 
 function goTrivia() {
 	if (questionsLeft < 9) {
@@ -114,6 +118,7 @@ function goTrivia() {
 	countdown();
 	}
 	else {
+		endGame();
 		audio.play();
 	}
 };

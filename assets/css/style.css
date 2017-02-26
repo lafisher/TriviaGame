@@ -30,6 +30,10 @@ p{color: red;
 	line-height: 50px;
 }
 
+.theLab :hover {
+    color: purple;
+}
+
 .timer {
 	color: red;
 	text-align: center;
@@ -38,7 +42,6 @@ p{color: red;
 .finalCountDown {
 	color: red;
 	text-align: center;
-
 }
 
 .theLab {color: red;
@@ -49,4 +52,9 @@ p{color: red;
 	text-align: center;
 	line-height: 50px;
 }
+
+
+
+
+
 

@@ -25,7 +25,6 @@ var timeLeft = 25;
 var timerNum;
 var audio = new Audio("assets/rhps-jump2lft.wav");
 
-//audio.play();
 //oh look a bootstrap button. I changed it to DANGER. that's nice
 function initialize() {
 	startGame = "<p class='text-center main-button-container'><a class='btn btn-danger btn-lg start-button' href='#' role='button'>Damnit Janet</a></p>";
@@ -81,6 +80,7 @@ function generateLossDueToTimeOut() {
 	gamePlay = "<p class='text-center'> ak! You've been Medusa Transducered! The Answer is " + answers[questionsLeft] + "</p>" ;
 	$(".theLab").html(gamePlay);
 	setTimeout(goTrivia, 4000);
+	lostInTime();
 };
 //timer function 
 function lostInTime() {
@@ -90,13 +90,12 @@ function lostInTime() {
 	timerNum = setInterval(countdown, 1000);
 
 	$(".timer").html("<div id='finalCountDown'><h5>Time Warp in . . .  " + timeLeft + "</h5></div>");
- 	//countdown(); 
 };
 
 function countdown() {
-		if (timeLeft < 0) {
+		if (timeLeft === 0) {
 			clearInterval(timerNum);
-			//generateLossDueToTimeOut();					 
+			generateLossDueToTimeOut();					 
 		}
 		else {
 			$(".timer").html("<div id='finalCountDown'><h5>Time Warp in  . . . " + timeLeft + "</h5></div>");
@@ -107,6 +106,7 @@ function countdown() {
 function endGame(){
 	gamePlay =  "<p class='summary-correct'>Chances to return to Transylvania: " + correctAnswers + "</p>" + "<p>Shot with a ray gun by the butler: " + incorrectAnswers + "</p>" + "<p>Medusa Transducer: " + noAnswer + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-danger btn-lg reset-button' href='#' role='button'>Time Warp AGAIN!</a></p>";
 	$(".theLab").html(gamePlay);
+	clearInterval(timerNum);
 };
 
 
@@ -122,6 +122,15 @@ function goTrivia() {
 		audio.play();
 	}
 };
+$("body").on("click", ".reset-button", function(event){
+		correctAnswers = 0;
+ 		incorrectAnswers = 0;
+		noAnswer = 0;
+		questionsLeft = 0; 
+		lostInTime();
+		letThereBeQuestions();
+		//audio.pause(); can't figure out audio stop/pause
+});
 
  // and lost in space. and meaning. 
 })

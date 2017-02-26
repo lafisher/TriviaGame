@@ -14,7 +14,6 @@ var startGame;
 var questions =["Richard O'Brien, who wrote the musical on which the movie was based, portrayed what character in the film version?", "The movie marked the feature film debut of which one of these principal actors?", "What was the title of Richard O'Brien's not-quite-sequel movie from 1980 that placed new actors in the roles of Brad and Janet?", "Which character in the film is the first to be turned into a statue by the Medusa Transducer?", "Known as The Home of Happiness, name the town in which the motion picture is set.", "Which cast member's mouth lip-synchs along with Science Fiction Double Feature during the opening credits of the film?","In 1990, the movie was released on VHS in the United States for the very first time. What was the retail price of this videocassette?","Near the movie's beginning, what historic event can be heard on the radio (and seen in the newspaper headline) when Brad and Janet are in the car on the way to Dr. Scott's home?","What song appeared on the Original Motion Picture Soundtrack, but was edited out of the U.S. version of the film?","What was the MPAA letter rating given to The Rocky Horror Picture Show?"];
 var choices = [["Frank N. Furter", "Riff-Raff", "Brad Majors" , "Eddie" ], ["Meat Loaf", "Susan Sarandon", "Barry Bostwick", "Tim Curry"],["The Road to Transylvania", "Rocky's Revenge", "Crazy Sun", "Shock Treatment"],["Brad", "Dr. Scott", "Rocky", "Janet"],["Canton", "Denton", "Fenton", "Wharton"],["Meat Loaf (Eddie)", "Susan Sarandon (Janet)", "Patricia Quinn (Magenta)", "Tim Curry (Frank)"],["$12.95", "$29.95", "$49.95", "$89.95"],["the resignation of Richard Nixon", "the Three Mile Island nuclear accident" ,"the beginning of the Tet Offensive" ,"the breakup of the Beatles"],["Once in a While", "The Sword of Damocles", "Planet Schmanet Janet", "Super Heroes"],["PG", "PG-13", "R", "Not rated"]];
 var answers =["b) Riff-Raff", "d) Tim Curry", "d) Shock Treatment","a) Brad", "b) Denton","c) Patricia Quinn (Magenta)", "d) $89.95","a) the resignation of Richard Nixon","d) Super Heroes", "c) R"];
-var imageArray =[]
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var noAnswer = 0;
@@ -41,6 +40,8 @@ initialize();
 function letThereBeQuestions() {
 	gamePlay = "<p class='text-center'>" + questions[questionsLeft] + "</p><p class='first-answer answer'>a) " + choices[questionsLeft][0] + "</p><p class='answer'>b) " + choices[questionsLeft][1] + "</p><p class='answer'>c) " + choices[questionsLeft][2] + "</p><p class='answer'>d) " + choices[questionsLeft][3] + "</p>";
 	$(".theLab").html(gamePlay);
+	// don't think i need this much code. blame bootstrap
+	$(".image").html("<div class='pic'><img src='assets/images/frankinpool.jpg' class='sidebar' /></div>")
 }
 //on click event to choose answer 
 //note to self - come up with a better naming system answer and answers not so much
@@ -103,11 +104,14 @@ function countdown() {
 		}
 
 	};
+
 function endGame(){
 	gamePlay =  "<p class='summary-correct'>Chances to return to Transylvania: " + correctAnswers + "</p>" + "<p>Shot with a ray gun by the butler: " + incorrectAnswers + "</p>" + "<p>Medusa Transducer: " + noAnswer + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-danger btn-lg reset-button' href='#' role='button'>Time Warp AGAIN!</a></p>";
 	$(".theLab").html(gamePlay);
 	clearInterval(timerNum);
+	$(".image").html("<div class='pic'><img src='assets/images/frankinthelab.jpg' class='sidebar' /></div>")
 };
+
 
 
 function goTrivia() {
